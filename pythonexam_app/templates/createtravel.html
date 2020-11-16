@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Trip!</title>
+</head>
+<body>
+    <h1>Create a new trip!</h1>
+    <a href="/success">Back</a>
+    |
+    <a href="/logout">Logout</a>
+    {% if messages %}
+        {% for message in messages%}
+        <p style="color: red;">{{message}}</p>
+        {% endfor %}
+    {% endif %}
+    <form action="/uploadtravel" method="post">
+    {% csrf_token%}
+    <p>Destination: <input type="text" name="desc" id=""/></p>
+    <p>Description/Plan: <input type="text" name="plan" id=""/></p>
+    <p>Travel Date From: <input type="date" name="startDate" id=""/></p>
+    <p>Travel Date To: <input type="date" name="endDate" id=""/></p>
+    <p><input type="submit" value="Add a Trip"/></p</p>
+    </form>
+
+
+</body>
+</html>

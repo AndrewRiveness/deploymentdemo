@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Welcome to Your Trips!</h1>
+
+    <h2>Hello, {{loggedInUser.first_name}}!</h2>
+
+
+    <a href="/trip/create">Create A Trip</a>
+    |
+    <a href="/logout">Logout</a>
+
+
+    <hr>
+
+    <h2>Your Trips</h2>
+    <table>
+        <tr>
+            <th>Description</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Plan</th>
+            <th>Action:</th>
+        </tr>
+        {% for trip in favTrips %}
+        <tr>
+            <td><a href="/trip/{{trip.id}}">{{trip.description}}</a></td>
+            <td>{{trip.start_date}}</td>
+            <td>{{trip.end_date}}</td>
+            <td>{{trip.plan}}</td>
+            <td><a href="/removetrip/{{trip.id}}">Cancel</a> | <a href="/deletetrip/{{trip.id}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+<hr>
+<h2>Other User Trips</h2>
+<table>
+    <tr>
+        <th>Description</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Join?</th>
+    </tr>
+    {% for trip in nonTrips %}
+    <tr>
+        <td><a href="/trip/{{trip.id}}">{{trip.description}}</a></td>
+        <td>{{trip.start_date}}</td>
+        <td>{{trip.end_date}}</td>
+        <td><a href="/addtrip/{{trip.id}}">Join</a></td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+
+</html>

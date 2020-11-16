@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Info</title>
+</head>
+<body>
+    <h1>Trip Destination: {{onetrip.description}}</h1>
+
+    <a href="/success">Back</a>
+    |
+    <a href="/logout">Logout</a>
+
+    <h2>Planned By: {{onetrip.creator.first_name}} {{onetrip.creator.last_name}}</h2>
+    <h2>Travel Date From: {{onetrip.start_date}}</h2>
+    <h2>Travel Date To: {{onetrip.end_date}}</h2>
+
+<hr>
+
+    <h2>Other Users joining this trip:</h2>
+
+    {% for userObj in onetrip.favoritors.all %}
+    <h3>{{userObj.first_name}} {{userObj.last_name}}</h3>
+    {% endfor %}
+</body>
+</html>

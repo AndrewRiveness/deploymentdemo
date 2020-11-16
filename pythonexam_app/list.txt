@@ -1,0 +1,6 @@
+Dashboard
+Delete link appears if the logged user added the trip
+
+
+
+
